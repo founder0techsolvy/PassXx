@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: -webkit-linear-gradient(to right, #000000 ,#130F40);
+	background: linear-gradient(to right, #000000, #130F40);
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s forwards;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+    position: relative;
+}
+
+nav {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.home-link {
+    cursor: pointer;
+    color: #007bff;
+    font-size: 1.2em;
+    /* text-decoration: none; */
+    display: flex;
+    align-items: center;
+}
+
+.home-link i {
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.home-link:hover {
+    cursor: pointer;
+    color: #ffffff;
+}
+
+header h1 {
+    color: #bb86fc;
+    margin: 0;
+    font-size: 2.5em;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 1s forwards 0.5s;
+}
+
+.agenda, .team {
+    margin: 40px 0;
+}
+
+.agenda h2, .team h2 {
+    color: #bb86fc;
+    font-size: 2em;
+    border-bottom: 2px solid #ff6f61;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s forwards 1s;
+}
+
+.agenda p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s forwards 1.5s;
+}
+
+.team-member {
+    margin: 20px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s forwards 2s;
+}
+
+.team-member h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.team-member p {
+    font-size: 1.1em;
+    color: #bbbbbb;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    margin-right: 15px;
+    color: #007bff;
+    font-size: 1.5em;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #333;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s forwards 2.5s;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #888;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
