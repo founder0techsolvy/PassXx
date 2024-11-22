@@ -64,7 +64,7 @@ function displayPassword(data) {
     passwordEntry.className = "password-entry";
     passwordEntry.innerHTML = `
         <h2>${data.websitename}</h2>
-        <p>Email/User-Id: ${data.email}</p>
+        <p>Email/User-Id: ${data.userIdentifier}</p>
         <div class="password">
             <input type="password" value="${data.password}" disabled>
             <span class="toggle-visibility" title="Show/Hide Password">👁️</span>
