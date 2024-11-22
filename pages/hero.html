@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" href="../password-manager.png" type="image/png">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PassX</title>
+        <link rel="stylesheet" href="../stylesheets/style.css" />
+        <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+        <link
+            type="text/css"
+            rel="stylesheet"
+            href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css"
+        />
+    </head>
+
+    <body>
+        <nav>
+          <a href="../pages/aboutus.html"><div class="logo" style="color: white;">About</div> </a>
+            <ul>
+                
+                    <!-- Logout Button -->
+                    <button id="logout" 
+                        style=" position: fixed; 
+                        top: 5px; 
+                        right: 5px; 
+                        width: 70px; 
+                        height: 35px; 
+                            background-color: #ff4d4d; 
+                            color: white; 
+                            border: none; 
+                            border-radius: 5px; 
+                            cursor: grab; 
+                            z-index: 1000; 
+                            display: flex; 
+                            align-items: center; 
+                            justify-content: center; 
+                            font-size: 18px; 
+                            font-weight: bold; 
+                            white-space: nowrap; 
+                            user-select: none;">
+                        Logout
+                    </button>
+                
+                    <script type="module">
+                        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+                        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+                
+                        // Firebase config (replace with your Firebase config if needed)
+                        const firebaseConfig = {
+                            apiKey: "AIzaSyCs-LVetCfMPCDvS2bQumkk_e_Q0gjqvYU",
+                            authDomain: "passx-9a4ec.firebaseapp.com",
+                            databaseURL: "https://passx-9a4ec-default-rtdb.firebaseio.com",
+                            projectId: "passx-9a4ec",
+                            storageBucket: "passx-9a4ec.appspot.com",
+                            messagingSenderId: "221509781528",
+                            appId: "1:221509781528:web:b03782a94971aa20dcdb6d"
+                        };
+                
+                        // Initialize Firebase
+                        const app = initializeApp(firebaseConfig);
+                        const auth = getAuth(app);
+                
+                        const logoutButton = document.getElementById("logout");
+                
+                        // Logout Functionality
+                        logoutButton.addEventListener("click", () => {
+                            if (confirm("Are you sure you want to logout?")) {
+                                signOut(auth)
+                                    .then(() => {
+                                        alert("You have been logged out.");
+                                        window.location.href = "../pages/login.html";
+                                    })
+                                    .catch((error) => {
+                                        console.error("Logout failed:", error);
+                                        alert("Logout failed. Please try again.");
+                                    });
+                            }
+                        });
+                    </script>
+            </ul>
+        </nav>
+        <div class="bigcontainer">
+            <div class="container" id="contain">
+
+                <!-- <h1 id="welcome-message">Welcome!</h1> -->
+                <h1>Password Manager <p>By SHASTRI</p></h1>
+                
+                
+    
+                <div class="boxmain">
+                    <div class="box" id="showpass">Add Or View Password</div>
+                    
+                <!--   <div class="box" id="addpass">Add Password</div> -->
+                </div>
+                
+            </div>
+        </div>
+        
+        <script src="../assets/script.js"></script>
+        <script src="../assets/firebase.js" type="module"></script>
+    </body>
+</html>
