@@ -3,23 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sliding signup and signin form - BYTEWEBSTER</title>
+  <title>Login/Signup Page- PassX</title>
   <link rel="stylesheet" href="./login.css">
-  <!-- https://bytewebster.com/ -->
-  <!-- https://bytewebster.com/ -->
-  <!-- https://bytewebster.com/ -->
 </head>
 <body>
-<div class="container">
+<div class="container" style="border-radius: 10px; border-color: white">
       <div class="forms-container">
         <div class="form-control signup-form">
-          <form action="#">
-            <h2>Signup</h2>
+          <form action="#"> <br><br>
+            <h1>Create Account</h1>
             <input type="text" placeholder="Name" required />
             <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
-            <input type="password" placeholder="Confirm password" required />
-            <button>Signup</button>
+           <div style="position: relative; margin-bottom: 20px;">
+    <input 
+      type="password" 
+      id="password" 
+      placeholder="Password must be 6 characters" 
+      required 
+      style="width: 100%; padding: 10px 10px 10px 10px; border-radius: 5px;"
+    />
+    <span 
+      onclick="togglePassword('password', this)" 
+      style="position: absolute; right: 10px; top: 25%; transform: translateY(-50%); cursor: pointer;"
+    >
+      👁️
+    </span>
+  </div>
+  
+  <div style="position: relative; margin-bottom: 10px;">
+    <input 
+      type="password" 
+      id="confirm-password" 
+      placeholder="Confirm Password" 
+      required 
+      style="width: 100%; padding: 10px 10px 10px 10px; border-radius: 5px;"
+    />
+    <span 
+      onclick="togglePassword('confirm-password', this)" 
+      style="position: absolute; right: 10px; top: 25%; transform: translateY(-50%); cursor: pointer;"
+    >
+      👁️
+    </span>
+  </div>
+  <button type="submit" style="background: #bb86fc;">
+    Sign Up
+  </button>
           </form>
           <span>Reach Us at!</span>
           <div class="socials">
@@ -28,12 +56,14 @@
             <i class="fab fa-linkedin-in"></i>
           </div>
         </div>
+        <!--Sign In <form action="" method="get" accept-charset="utf-8"-->
         <div class="form-control signin-form">
           <form action="#">
-            <h2>Signin</h2>
-            <input type="email" placeholder="email" required />
-            <input type="password" placeholder="Password" required />
-            <button>Signin</button>
+            <br><br>
+            <h1>Sign In</h1>
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password must be 6 characters." required />
+            <button style="background: #bb86fc">Sign In</button>
           </form>
           <span>Reach Us at!</span>
           <div class="socials">
@@ -46,25 +76,39 @@
       <div class="intros-container">
         <div class="intro-control signin-intro">
           <div class="intro-control__inner">
-            <h2>Welcome back!</h2>
-            <p>
-              Welcome back! We are so happy to have you here. It's great to see you again. We hope you had a safe and enjoyable time away.
-            </p>
-            <button id="signup-btn">No account yet? Signup.</button>
+.                     <h1>New User?</h1>
+                        <p style="margin: 10px; font-size: 1.2em">
+                            Enter your personal details and start journey of saving passwords with
+                            us
+                        </p>
+            <button id="signup-btn">Signup</button>
           </div>
         </div>
-        <div class="intro-control signup-intro">
+        <div class="intro-control signup-intro" style="background: #bb86fc">
           <div class="intro-control__inner">
-            <h2>Come join us!</h2>
-            <p>
-              We are so excited to have you here.If you haven't already, create an account to get access to exclusive offers, rewards, and discounts.
-            </p>
-            <button id="signin-btn">Already have an account? Signin.</button>
+            <h1>Welcome Back!</h1>
+                        <p style="font-size: 1.2em; margin: 10px">
+                            To keep connected with us please login with your
+                            personal info
+                        </p>
+            <button id="signin-btn" style="background: #bb86fc">Login</button>
           </div>
         </div>
       </div>
     </div>
+    <script>
+  function togglePassword(inputId, iconElement) {
+    const input = document.getElementById(inputId);
+    if (input.type === "password") {
+      input.type = "text";
+      iconElement.textContent = "🙈"; // Change icon to indicate hiding
+    } else {
+      input.type = "password";
+      iconElement.textContent = "👁️"; // Change icon to indicate viewing
+    }
+  }
+</script>
   <script  src="./login.js"></script>
   <script type="module" src="../assets/firebase.js"></script>
 </body>
-              </html>
+                                            </html>
