@@ -66,41 +66,58 @@ function displayPassword(data) {
         <h2>${data.websitename}</h2>
         <p>Email/User-Id: ${data.userIdentifier}</p>
         <div class="password">
-            <input type="password" value="${data.password}" disabled>
+            <p><b>Password:</b></p>
+            <input type="password" value="${data.primaryPassword}" disabled>
             <span class="toggle-visibility" title="Show/Hide Password">👁️</span>
             <span class="copy" title="Copy Password">📋</span>
         </div>
+        ${data.secondaryPassword ? `
+        <div class="password">
+            <p><b>2nd Password:</b></p>
+            <input type="password" value="${data.secondaryPassword}" disabled>
+            <span class="toggle-visibility" title="Show/Hide Password">👁️</span>
+            <span class="copy" title="Copy Password">📋</span>
+        </div>` : ''}
     `;
     passwordList.appendChild(passwordEntry);
 
-    const passwordInput = passwordEntry.querySelector("input");
-    const toggleVisibility = passwordEntry.querySelector(".toggle-visibility");
-    const copyButton = passwordEntry.querySelector(".copy");
+    addPasswordEventListeners(passwordEntry);
+}
 
-    // Toggle Password Visibility
-    toggleVisibility.addEventListener("click", () => {
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            toggleVisibility.textContent = "🙈";
-        } else {
-            passwordInput.type = "password";
-            toggleVisibility.textContent = "👁️";
-        }
+function addPasswordEventListeners(passwordEntry) {
+    const inputs = passwordEntry.querySelectorAll("input");
+    const toggleVisibilityButtons = passwordEntry.querySelectorAll(".toggle-visibility");
+    const copyButtons = passwordEntry.querySelectorAll(".copy");
+
+    // Toggle visibility for both primary and secondary passwords
+    toggleVisibilityButtons.forEach((toggleVisibility, index) => {
+        toggleVisibility.addEventListener("click", () => {
+            const input = inputs[index];
+            if (input.type === "password") {
+                input.type = "text";
+                toggleVisibility.textContent = "🙈";
+            } else {
+                input.type = "password";
+                toggleVisibility.textContent = "👁️";
+            }
+        });
     });
 
-    // Copy to Clipboard
-    copyButton.addEventListener("click", () => {
-        navigator.clipboard
-            .writeText(passwordInput.value)
-            .then(() => {
-                showNotification("Password copied to clipboard!");
-            })
-            .catch((error) => {
-                console.error("Failed to copy password:", error);
-                showNotification("Failed to copy password. Please try again.");
-            });
+    // Copy functionality for both passwords
+    copyButtons.forEach((copyButton, index) => {
+        copyButton.addEventListener("click", () => {
+            const input = inputs[index];
+            navigator.clipboard
+                .writeText(input.value)
+                .then(() => showNotification("Password copied to clipboard!"))
+                .catch((error) => {
+                    console.error("Failed to copy password:", error);
+                    showNotification("Failed to copy password. Please try again.");
+                });
+        });
     });
 }
+
 
 // Show Notification
 function showNotification(message) {
