@@ -1,70 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link rel="icon" href="../password-manager.png" type="image/png">
-        <title>Login page for PassX</title>
-        <link rel="stylesheet" href="../stylesheets/login.css">
-        <script src="../assets/login.js" type="module"></script>
-        
-        
-    </head>
-    <body>
-        <div class="container" id="container">
-            <div class="form-container sign-up-container">
-                <form action="#" autocomplete="off">
-                    <h1>Create Account</h1>
-            <div class="social-container" id="sign-up-google">
-                        Enter Details To Start
-                    </div>
-                    <input type="text" id="full_name"  placeholder="Name" />
-                    <input type="email" id="email" placeholder="Email" />
-                    <input type="password" id="password" placeholder="Password" />
-                    <button id="signup">Sign Up</button>
-                </form>
-            </div>
-            <div class="form-container sign-in-container">
-                <form action="#" autocomplete="off">
-                    <h1>Sign in</h1>
-                <div class="social-container">
-                        <button>Enter Your Credentials</button>
-                    </div>
-                    <input type="email" id="emailLogIn" placeholder="Email" />
-                    <input type="password" id="passwordLogIn" placeholder="Password" />
-<a href="#" id="resetPassword">Forgot your password?</a>
-
-                    <button id="sign-in-normal">Sign In</button>
-                </form>
-            </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-left">
-                        <h1>Welcome Back!</h1>
-                        <p>
-                            To keep connected with us please login with your
-                            personal info
-                        </p>
-                        <button class="ghost" id="signIn">Sign In</button>
-                    </div>
-                    <div class="overlay-panel overlay-right">
-                        <h1>Hello, Friend!</h1>
-                        <p>
-                            Enter your personal details and start journey of saving passwords with
-                            us
-                        </p>
-                        <button class="ghost" id="signUp">Sign Up</button>
-                    </div>
-                </div>
-            </div>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sliding signup and signin form - BYTEWEBSTER</title>
+  <link rel="stylesheet" href="./login.css">
+  <!-- https://bytewebster.com/ -->
+  <!-- https://bytewebster.com/ -->
+  <!-- https://bytewebster.com/ -->
+</head>
+<body>
+<div class="container">
+      <div class="forms-container">
+        <div class="form-control signup-form">
+          <form action="#">
+            <h2>Signup</h2>
+            <input type="text" placeholder="Name" required />
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <input type="password" placeholder="Confirm password" required />
+            <button>Signup</button>
+          </form>
+          <span>Reach Us at!</span>
+          <div class="socials">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-google-plus-g"></i>
+            <i class="fab fa-linkedin-in"></i>
+          </div>
         </div>
-
-        <footer>
+        <div class="form-control signin-form">
+          <form action="#">
+            <h2>Signin</h2>
+            <input type="email" placeholder="email" required />
+            <input type="password" placeholder="Password" required />
+            <button>Signin</button>
+          </form>
+          <span>Reach Us at!</span>
+          <div class="socials">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-google-plus-g"></i>
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+        </div>
+      </div>
+      <div class="intros-container">
+        <div class="intro-control signin-intro">
+          <div class="intro-control__inner">
+            <h2>Welcome back!</h2>
             <p>
-            created with ♥️ By by Avinash Mishra 
+              Welcome back! We are so happy to have you here. It's great to see you again. We hope you had a safe and enjoyable time away.
             </p>
-        </footer>
-
-        <script type="module" src="../assets/firebase.js"></script>
-
-        
-    </body>
-</html>
+            <button id="signup-btn">No account yet? Signup.</button>
+          </div>
+        </div>
+        <div class="intro-control signup-intro">
+          <div class="intro-control__inner">
+            <h2>Come join us!</h2>
+            <p>
+              We are so excited to have you here.If you haven't already, create an account to get access to exclusive offers, rewards, and discounts.
+            </p>
+            <button id="signin-btn">Already have an account? Signin.</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script  src="./login.js"></script>
+  <script type="module" src="../assets/firebase.js"></script>
+</body>
+              </html>
