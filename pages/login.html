@@ -6,8 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page For PassX</title>
   <link rel="stylesheet" href="./login.css">
+  <style>
+    .message {
+    color: #f44336; /* Error color (red) */
+    margin-top: 10px;
+    font-size: 0.9em;
+    display: none; /* Hidden by default */
+}
+
+.message.success {
+    color: #4CAF50; /* Success color (green) */
+}
+
+  </style>
 </head>
 <body>
+  
+  <!-- Add this div for error/success messages in the signup form -->
+<div class="message" id="signup-message"></div>
+<!-- Add this div for error/success messages in the signin form -->
+<div class="message" id="signin-message"></div>
+
+
   <div class="container" style="border-radius: 10px; border-color: white">
     <div class="forms-container">
       <div class="form-control signup-form">
@@ -130,19 +150,18 @@
         iconElement.textContent = "👁️"; // Change icon to indicate viewing
       }
     }
+    
+    //msgs
+    function showMessage(elementId, message, isSuccess = false) {
+    const messageElement = document.getElementById(elementId);
+    messageElement.textContent = message;
+    messageElement.style.display = 'block';
+    messageElement.classList.toggle('success', isSuccess);
+}
 
-    function validateSignupForm() {
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirm-password').value;
-      if (password !== confirmPassword) {
-        alert('Passwords do not match.');
-        return false;
-      }
-      return true;
-    }
   </script>
   <script src="./login.js"></script>
   <script type="module" src="../assets/firebase.js"></script>
 </body>
-   </html>
-   
+            </html>
+            
