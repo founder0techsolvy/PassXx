@@ -66,14 +66,14 @@ function displayPassword(data) {
         <h2>${data.websitename}</h2>
         <p>Email/User-Id: ${data.userIdentifier}</p>
         <div class="password">
-            <p><b>Password-01:</b></p>
+            <p><b>Password:</b></p>
             <input type="password" value="${data.primaryPassword}" disabled>
             <span class="toggle-visibility" title="Show/Hide Password">👁️</span>
             <span class="copy" title="Copy Password">📋</span>
         </div>
         ${data.secondaryPassword ? `
         <div class="password">
-            <p><b>Password-02:</b></p>
+            <p><b>Password:</b></p>
             <input type="password" value="${data.secondaryPassword}" disabled>
             <span class="toggle-visibility" title="Show/Hide Password">👁️</span>
             <span class="copy" title="Copy Password">📋</span>
