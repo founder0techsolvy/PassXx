@@ -69,14 +69,20 @@ function resetFormFields(...fields) {
 signupFormBtn.addEventListener("click", () => {
     const email = emailSignup.value;
     const password = passwordSignup.value;
+    const confirmPassword = document.getElementById("confirm-password").value;
 
     if (!validateEmail(email)) {
-        alert("Please enter a valid email address.");
+        showMessage('signup-message', "Please enter a valid email address.");
         return;
     }
 
     if (!validatePassword(password)) {
-        alert("Password must be at least 6 characters long.");
+        showMessage('signup-message', "Password must be at least 6 characters long.");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        showMessage('signup-message', "Passwords do not match.");
         return;
     }
 
@@ -85,11 +91,12 @@ signupFormBtn.addEventListener("click", () => {
     createUserWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
             console.log("User signed up successfully:", userCredential.user);
+            showMessage('signup-message', "Account created successfully!", true);
             window.location.href = "../pages/hero.html";
         })
         .catch(error => {
             console.error("Signup error:", error.message);
-            alert("Signup failed: " + error.message);
+            showMessage('signup-message', "Signup failed: " + error.message);
             resetFormFields(emailSignup, passwordSignup);
         })
         .finally(() => hideLoader(signupFormBtn));
@@ -101,12 +108,12 @@ signinFormBtn.addEventListener("click", () => {
     const password = passwordSignin.value;
 
     if (!validateEmail(email)) {
-        alert("Please enter a valid email address.");
+        showMessage('signin-message', "Please enter a valid email address.");
         return;
     }
 
     if (!validatePassword(password)) {
-        alert("Password must be at least 6 characters long.");
+        showMessage('signin-message', "Password must be at least 6 characters long.");
         return;
     }
 
@@ -115,11 +122,12 @@ signinFormBtn.addEventListener("click", () => {
     signInWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
             console.log("User signed in successfully:", userCredential.user);
+            showMessage('signin-message', "Logged in successfully!", true);
             window.location.href = "../pages/hero.html";
         })
         .catch(error => {
             console.error("Signin error:", error.message);
-            alert("Signin failed: " + error.message);
+            showMessage('signin-message', "Signin failed: " + error.message);
             resetFormFields(emailSignin, passwordSignin);
         })
         .finally(() => hideLoader(signinFormBtn));
@@ -145,3 +153,4 @@ resetPasswordBtn.addEventListener("click", () => {
             });
     }
 });
+  
