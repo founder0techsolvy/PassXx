@@ -11,7 +11,7 @@
   <div class="container" style="border-radius: 10px; border-color: white">
     <div class="forms-container">
       <div class="form-control signup-form">
-        <form action="#" onsubmit="return validateSignupForm()">
+        <form action="#" onsubmit="return validateSignupForm()" autocomplete="off">
           <br><br>
           <h1>Create Account</h1>
           <input type="text" placeholder="Name" required />
@@ -22,6 +22,7 @@
               id="password" 
               placeholder="Password must be 6 characters" 
               required 
+              autocomplete="new-password"
               style="width: 100%; padding: 10px 10px 7px 10px; border-radius: 5px;"
             />
             <span 
@@ -37,6 +38,7 @@
               id="confirm-password" 
               placeholder="Confirm Password" 
               required 
+              autocomplete="new-password"
               style="width: 100%; padding: 10px 10px 7px 10px; border-radius: 5px;"
             />
             <span 
@@ -60,7 +62,7 @@
       </div>
       <!-- Sign In -->
       <div class="form-control signin-form">
-        <form action="#">
+        <form action="#" autocomplete="off">
           <br><br>
           <h1>Sign In</h1>
           <input type="email" placeholder="Email" required />
@@ -70,6 +72,7 @@
               id="login-password" 
               placeholder="Password" 
               required 
+              autocomplete="new-password"
               style="width: 100%; padding: 10px 40px 10px 10px; border-radius: 5px;"
             />
             <span 
