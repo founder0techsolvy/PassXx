@@ -41,18 +41,17 @@ const addingPassword = document.getElementById("adding-password");
 addingPassword.addEventListener("click", function () {
     const websitename = document.getElementById("websiteToAdd").value.trim();
     const userIdentifier = document.getElementById("emailToAdd").value.trim(); // This can be email, mobile number, or user ID
-    const password = document.getElementById("passwordToAdd").value.trim();
+    const primaryPassword = document.getElementById("primaryPasswordToAdd").value.trim();
+    const secondaryPassword = document.getElementById("secondaryPasswordToAdd").value.trim();
 
     // Form validation
-    if (!websitename || !userIdentifier || !password) {
-        alert("All fields are required. Please fill in all fields.");
+    if (!websitename || !userIdentifier || !primaryPassword) {
+        alert("Website/App Name, Email/User-Id, and Primary Password are required.");
         return;
     }
 
     if (!validateUserIdentifier(userIdentifier)) {
-        alert(
-            "Please enter a valid email, mobile number, or user ID. Mobile numbers should be 10 digits."
-        );
+        alert("Please enter a valid email, mobile number, or user ID. Mobile numbers should be 10 digits.");
         return;
     }
 
@@ -65,12 +64,9 @@ addingPassword.addEventListener("click", function () {
             const uid = user.uid;
             console.log("User ID:", uid);
 
-            const sanitizedWebsiteName = websitename.replace(
-                /[^a-zA-Z0-9_-]/g,
-                "_"
-            );
+            const sanitizedWebsiteName = websitename.replace(/[^a-zA-Z0-9_-]/g, "_");
 
-            function writeUserData(userId, websitename, userIdentifier, password) {
+            function writeUserData(userId, websitename, userIdentifier, primaryPassword, secondaryPassword) {
                 console.log("Saving data to database...");
 
                 const websiteRef = ref(
@@ -81,21 +77,19 @@ addingPassword.addEventListener("click", function () {
                 set(websiteRef, {
                     websitename: websitename,
                     userIdentifier: userIdentifier,
-                    password: password,
+                    primaryPassword: primaryPassword,
+                    secondaryPassword: secondaryPassword || null, // Save null if secondary password is not provided
                 })
                     .then(() => {
                         console.log("Data saved successfully!");
 
                         // Show success message
-                        document.getElementById("add-pass-success").style.transition =
-                            "all 0.5s ease-in-out";
-                        document.getElementById("add-pass-success").style.display =
-                            "flex";
+                        document.getElementById("add-pass-success").style.transition = "all 0.5s ease-in-out";
+                        document.getElementById("add-pass-success").style.display = "flex";
 
                         // Redirect after 2 seconds
                         setTimeout(() => {
-                            document.getElementById("add-pass-success").style.display =
-                                "none";
+                            document.getElementById("add-pass-success").style.display = "none";
                             window.location.href = "../pages/passwordlist.html";
                         }, 2000);
                     })
@@ -106,7 +100,7 @@ addingPassword.addEventListener("click", function () {
                     });
             }
 
-            writeUserData(uid, sanitizedWebsiteName, userIdentifier, password);
+            writeUserData(uid, sanitizedWebsiteName, userIdentifier, primaryPassword, secondaryPassword);
         } else {
             console.log("User is logged out");
         }
@@ -114,6 +108,7 @@ addingPassword.addEventListener("click", function () {
 
     console.log("Entered in adding password event");
 });
+
 
 // Validation function for email, mobile number, or user ID
 function validateUserIdentifier(identifier) {
@@ -129,3 +124,33 @@ function showError(message) {
     errorBox.textContent = message;
     errorBox.style.display = "block";
 }
+
+//
+
+// Toggle visibility for Primary Password
+const togglePrimaryPassword = document.getElementById("togglePrimaryPassword");
+const primaryPasswordInput = document.getElementById("primaryPasswordToAdd");
+
+togglePrimaryPassword.addEventListener("click", () => {
+    if (primaryPasswordInput.type === "password") {
+        primaryPasswordInput.type = "text";
+        togglePrimaryPassword.textContent = "🙈"; // Change icon
+    } else {
+        primaryPasswordInput.type = "password";
+        togglePrimaryPassword.textContent = "👁️"; // Revert icon
+    }
+});
+
+// Toggle visibility for Secondary Password
+const toggleSecondaryPassword = document.getElementById("toggleSecondaryPassword");
+const secondaryPasswordInput = document.getElementById("secondaryPasswordToAdd");
+
+toggleSecondaryPassword.addEventListener("click", () => {
+    if (secondaryPasswordInput.type === "password") {
+        secondaryPasswordInput.type = "text";
+        toggleSecondaryPassword.textContent = "🙈"; // Change icon
+    } else {
+        secondaryPasswordInput.type = "password";
+        toggleSecondaryPassword.textContent = "👁️"; // Revert icon
+    }
+});
