@@ -31,3 +31,26 @@ document.addEventListener('DOMContentLoaded', () => {
         container.classList.remove('show-sign-in');
     });
 });
+
+//reset password 
+// Password Reset
+const resetPassword = document.getElementById("resetPassword");
+resetPassword.addEventListener("click", function () {
+    const email = prompt("Enter your registered email to reset your password:");
+    if (email) {
+        if (!validateEmail(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                alert("Password reset link sent successfully!");
+            })
+            .catch((error) => {
+                console.error("Error sending password reset email:", error.message);
+                alert("Error: " + error.message);
+            });
+    }
+});
+      
