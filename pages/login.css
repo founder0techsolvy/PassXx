@@ -10,13 +10,15 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #ddd;
-  font-size: 14px;
+	background: -webkit-linear-gradient(to right, #000000 ,#130F40);
+	background: linear-gradient(to right, #000000, #130F40);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
 }
 
 .container {
