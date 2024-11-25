@@ -11,7 +11,6 @@ const firebaseConfig = {
   appId: "1:221509781528:web:b03782a94971aa20dcdb6d"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
@@ -24,6 +23,7 @@ const signinFormBtn = document.querySelector(".signin-form button");
 const resetPasswordBtn = document.getElementById("resetPassword");
 const emailSignup = document.querySelector(".signup-form input[type='email']");
 const passwordSignup = document.querySelector(".signup-form input[type='password']");
+const confirmPasswordSignup = document.getElementById("confirm-password"); // Added confirm password field
 const emailSignin = document.querySelector(".signin-form input[type='email']");
 const passwordSignin = document.querySelector(".signin-form input[type='password']");
 
@@ -69,20 +69,21 @@ function resetFormFields(...fields) {
 signupFormBtn.addEventListener("click", () => {
     const email = emailSignup.value;
     const password = passwordSignup.value;
-    const confirmPassword = document.getElementById("confirm-password").value;
+    const confirmPassword = confirmPasswordSignup.value; // Get confirm password value
 
     if (!validateEmail(email)) {
-        showMessage('signup-message', "Please enter a valid email address.");
+        alert("Please enter a valid email address.");
         return;
     }
 
     if (!validatePassword(password)) {
-        showMessage('signup-message', "Password must be at least 6 characters long.");
+        alert("Password must be at least 6 characters long.");
         return;
     }
 
+    // Confirm Password Check
     if (password !== confirmPassword) {
-        showMessage('signup-message', "Passwords do not match.");
+        alert("Passwords do not match.");
         return;
     }
 
@@ -91,13 +92,12 @@ signupFormBtn.addEventListener("click", () => {
     createUserWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
             console.log("User signed up successfully:", userCredential.user);
-            showMessage('signup-message', "Account created successfully!", true);
             window.location.href = "../pages/hero.html";
         })
         .catch(error => {
             console.error("Signup error:", error.message);
-            showMessage('signup-message', "Signup failed: " + error.message);
-            resetFormFields(emailSignup, passwordSignup);
+            alert("Signup failed: " + error.message);
+            resetFormFields(emailSignup, passwordSignup, confirmPasswordSignup);
         })
         .finally(() => hideLoader(signupFormBtn));
 });
@@ -108,12 +108,12 @@ signinFormBtn.addEventListener("click", () => {
     const password = passwordSignin.value;
 
     if (!validateEmail(email)) {
-        showMessage('signin-message', "Please enter a valid email address.");
+        alert("Please enter a valid email address.");
         return;
     }
 
     if (!validatePassword(password)) {
-        showMessage('signin-message', "Password must be at least 6 characters long.");
+        alert("Password must be at least 6 characters long.");
         return;
     }
 
@@ -122,12 +122,11 @@ signinFormBtn.addEventListener("click", () => {
     signInWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
             console.log("User signed in successfully:", userCredential.user);
-            showMessage('signin-message', "Logged in successfully!", true);
             window.location.href = "../pages/hero.html";
         })
         .catch(error => {
             console.error("Signin error:", error.message);
-            showMessage('signin-message', "Signin failed: " + error.message);
+            alert("Signin failed: " + error.message);
             resetFormFields(emailSignin, passwordSignin);
         })
         .finally(() => hideLoader(signinFormBtn));
@@ -153,4 +152,3 @@ resetPasswordBtn.addEventListener("click", () => {
             });
     }
 });
-  
