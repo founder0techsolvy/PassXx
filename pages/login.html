@@ -14,7 +14,7 @@
             <h1>Create Account</h1>
             <input type="text" placeholder="Name" required />
             <input type="email" placeholder="Email" required />
-           <div style="position: relative; margin-bottom: 20px;">
+           <div style="position: relative; margin-bottom: 10px;">
     <input 
       type="password" 
       id="password" 
@@ -62,7 +62,21 @@
             <br><br>
             <h1>Sign In</h1>
             <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password must be 6 characters." required />
+            <div style="position: relative; margin-bottom: 10px;">
+      <input 
+        type="password" 
+        id="login-password" 
+        placeholder="Password" 
+        required 
+        style="width: 100%; padding: 10px 40px 10px 10px; border-radius: 5px;"
+      />
+      <span 
+        onclick="togglePassword('login-password', this)" 
+        style="position: absolute; right: 10px; top: 25%; transform: translateY(-50%); cursor: pointer;"
+      >
+        👁️
+      </span>
+    </div>
             <button style="background: #bb86fc">Sign In</button>
           </form>
           <span>Reach Us at!</span>
