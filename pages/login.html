@@ -1,136 +1,148 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-   <link rel="icon" href="../password-manager.png" type="image/png">
+  <link rel="icon" href="../password-manager.png" type="image/png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Logi Page For PassX</title>
+  <title>Login Page For PassX</title>
   <link rel="stylesheet" href="./login.css">
 </head>
 <body>
-<div class="container" style="border-radius: 10px; border-color: white">
-      <div class="forms-container">
-        <div class="form-control signup-form">
-          <form action="#"> <br><br>
-            <h1>Create Account</h1>
-            <input type="text" placeholder="Name" required />
-            <input type="email" placeholder="Email" required />
-           <div style="position: relative; margin-bottom: 10px;">
-    <input 
-      type="password" 
-      id="password" 
-      placeholder="Password must be 6 characters" 
-      required 
-      style="width: 100%; padding: 10px 10px 7px 10px; border-radius: 5px;"
-    />
-    <span 
-      onclick="togglePassword('password', this)" 
-      style="position: absolute; right: 10px; top: 25%; transform: translateY(-50%); cursor: pointer;"
-    >
-      👁️
-    </span>
-  </div>
-  
-  <div style="position: relative; margin-bottom: 10px;">
-    <input 
-      type="password" 
-      id="confirm-password" 
-      placeholder="Confirm Password" 
-      required 
-      style="width: 100%; padding: 10px 10px 7px 10px; border-radius: 5px;"
-    />
-    <span 
-      onclick="togglePassword('confirm-password', this)" 
-      style="position: absolute; right: 10px; top: 25%; transform: translateY(-50%); cursor: pointer;"
-    >
-      👁️
-    </span>
-  </div>
-  <button type="submit" style="background: #bb86fc;">
-    Sign Up
-  </button>
-          </form>
-          <span>Reach Us at!</span>
-          <div class="socials">
-            <a href="https://m.facebook.com/people/Mishra-Avinash/100026203311772/"> <i class="fab fa-facebook-f"></i> </a>
-            <a href="https://www.linkedin.com/in/pt-avinash-mishra-shastri-techsolvy/">  <i class="fab fa-linkedin-in"></i>
-            </a>
+  <div class="container" style="border-radius: 10px; border-color: white">
+    <div class="forms-container">
+      <div class="form-control signup-form">
+        <form action="#" onsubmit="return validateSignupForm()">
+          <br><br>
+          <h1>Create Account</h1>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <div style="position: relative; margin-bottom: 10px;">
+            <input 
+              type="password" 
+              id="password" 
+              placeholder="Password must be 6 characters" 
+              required 
+              style="width: 100%; padding: 10px 10px 7px 10px; border-radius: 5px;"
+            />
+            <span 
+              onclick="togglePassword('password', this)" 
+              style="position: absolute; right: 10px; top: 25%; transform: translateY(-50%); cursor: pointer;"
+            >
+              👁️
+            </span>
           </div>
-        </div>
-        <!--Sign In <form action="" method="get" accept-charset="utf-8"-->
-        <div class="form-control signin-form">
-          <form action="#">
-            <br><br>
-            <h1>Sign In</h1>
-            <input type="email" placeholder="Email" required />
-            <div style="position: relative; margin-bottom: 10px;">
-      <input 
-        type="password" 
-        id="login-password" 
-        placeholder="Password" 
-        required 
-        style="width: 100%; padding: 10px 40px 10px 10px; border-radius: 5px;"
-      />
-      <span 
-        onclick="togglePassword('login-password', this)" 
-        style="position: absolute; right: 10px; top: 25%; transform: translateY(-50%); cursor: pointer;"
-      >
-        👁️
-      </span>
-    </div>
-            <a href="#" id="resetPassword">Forgot your password?</a>
-            <br>
-            <button style="background: #bb86fc">Sign In</button>
-          </form>
-          <span>Reach Us at!</span>
-          <div class="socials">
-             <a href="https://m.facebook.com/people/Mishra-Avinash/100026203311772/"> <i class="fab fa-facebook-f"></i> </a>
-            <a href="https://www.linkedin.com/in/pt-avinash-mishra-shastri-techsolvy/">  <i class="fab fa-linkedin-in"></i>
-            </a>
+          <div style="position: relative; margin-bottom: 10px;">
+            <input 
+              type="password" 
+              id="confirm-password" 
+              placeholder="Confirm Password" 
+              required 
+              style="width: 100%; padding: 10px 10px 7px 10px; border-radius: 5px;"
+            />
+            <span 
+              onclick="togglePassword('confirm-password', this)" 
+              style="position: absolute; right: 10px; top: 25%; transform: translateY(-50%); cursor: pointer;"
+            >
+              👁️
+            </span>
           </div>
+          <button type="submit" style="background: #bb86fc;">Sign Up</button>
+        </form>
+        <span>Reach Us at!</span>
+        <div class="socials">
+          <a href="https://m.facebook.com/people/Mishra-Avinash/100026203311772/">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/pt-avinash-mishra-shastri-techsolvy/">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
         </div>
       </div>
-      <div class="intros-container">
-        <div class="intro-control signin-intro">
-          <div class="intro-control__inner">
-.                     <h1>New User?</h1>
-                        <p style="margin: 10px; font-size: 1.2em">
-                            Enter your personal details and start journey of saving passwords with
-                            us
-                        </p>
-            <button id="signup-btn">Signup</button>
+      <!-- Sign In -->
+      <div class="form-control signin-form">
+        <form action="#">
+          <br><br>
+          <h1>Sign In</h1>
+          <input type="email" placeholder="Email" required />
+          <div style="position: relative; margin-bottom: 10px;">
+            <input 
+              type="password" 
+              id="login-password" 
+              placeholder="Password" 
+              required 
+              style="width: 100%; padding: 10px 40px 10px 10px; border-radius: 5px;"
+            />
+            <span 
+              onclick="togglePassword('login-password', this)" 
+              style="position: absolute; right: 10px; top: 25%; transform: translateY(-50%); cursor: pointer;"
+            >
+              👁️
+            </span>
           </div>
-        </div>
-        <div class="intro-control signup-intro" style="background: #bb86fc">
-          <div class="intro-control__inner">
-            <h1>Welcome Back!</h1>
-                        <p style="font-size: 1.2em; margin: 10px">
-                            To keep connected with us please login with your
-                            personal info
-                        </p>
-            <button id="signin-btn" style="background: #bb86fc">Login</button>
-          </div>
+          <a href="#" id="resetPassword">Forgot your password?</a>
+          <br>
+          <button style="background: #bb86fc">Sign In</button>
+        </form>
+        <span>Reach Us at!</span>
+        <div class="socials">
+          <a href="https://m.facebook.com/people/Mishra-Avinash/100026203311772/">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/pt-avinash-mishra-shastri-techsolvy/">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
         </div>
       </div>
     </div>
-    <footer>
-            <p>
-            Developed with ♥️ By by Avinash Mishra 
-            </p>
-    </footer>
-    <script>
-  function togglePassword(inputId, iconElement) {
-    const input = document.getElementById(inputId);
-    if (input.type === "password") {
-      input.type = "text";
-      iconElement.textContent = "🙈"; // Change icon to indicate hiding
-    } else {
-      input.type = "password";
-      iconElement.textContent = "👁️"; // Change icon to indicate viewing
+    <div class="intros-container">
+      <div class="intro-control signin-intro">
+        <div class="intro-control__inner">
+          <h1>New User?</h1>
+          <p style="margin: 10px; font-size: 1.2em">
+            Enter your personal details and start the journey of saving passwords with us
+          </p>
+          <button id="signup-btn">Signup</button>
+        </div>
+      </div>
+      <div class="intro-control signup-intro" style="background: #bb86fc">
+        <div class="intro-control__inner">
+          <h1>Welcome Back!</h1>
+          <p style="font-size: 1.2em; margin: 10px">
+            To keep connected with us please login with your personal info
+          </p>
+          <button id="signin-btn" style="background: #bb86fc">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Developed with ♥️ By Avinash Mishra</p>
+  </footer>
+
+  <script>
+    function togglePassword(inputId, iconElement) {
+      const input = document.getElementById(inputId);
+      if (input.type === "password") {
+        input.type = "text";
+        iconElement.textContent = "🙈"; // Change icon to indicate hiding
+      } else {
+        input.type = "password";
+        iconElement.textContent = "👁️"; // Change icon to indicate viewing
+      }
     }
-  }
-</script>
-  <script  src="./login.js"></script>
+
+    function validateSignupForm() {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return false;
+      }
+      return true;
+    }
+  </script>
+  <script src="./login.js"></script>
   <script type="module" src="../assets/firebase.js"></script>
 </body>
-                                            </html>
+   </html>
+   
