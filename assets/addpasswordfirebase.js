@@ -104,7 +104,7 @@ function decryptPassword(encryptedPassword, secretKey) {
 
 
 
-const secretKey = "$#@&-+_()/$#@#_-+)-$)/&#";
+const secretKey = "PassXbyAvinash";
 
 
 
