@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-const secretKey = "$#@&-+_()/$#@#_-+)-$)/&#";
+const secretKey = "PassXbyAvinash";
 
 
 
